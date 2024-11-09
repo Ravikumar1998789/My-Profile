@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Font Awesome CDN link in your HTML head -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar with menu toggle icon -->
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <button class="btn btn-outline-light " id="menu-toggle">
+            <i class="fas fa-bars"></i> <!-- Hamburger Icon -->
+        </button>
+        <a class="navbar-brand" href="#">Resume Builder</a>
+    </div>
+</nav>
+
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('profile')">Profile</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('summary')">Summary</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('education')">Education</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('skills')">Skills</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('experience')">Experience</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('projects')">Projects</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="showSection('languages')">Languages</a>
+        </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="p-4 flex-grow-1" id="content">
+        <div id="profile" class="section active">
+            <h2>Profile</h2>
+        
+            <!-- Photo upload -->
+            <div class="mb-3">
+              
+               
+                
+                <!-- Image Preview (circular and centered below the upload button) -->
+                <div class="d-flex justify-content-center mt-2">
+                    <!-- Initially show a circular placeholder -->
+                    <img id="photo-preview" src="" alt="" class=" rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+
+                    
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                 <!-- Upload Button -->
+                 <button type="button" class="btn btn-primary" id="upload-btn">Upload Photo</button>
+                </div>
+            </div>
+            
+            <!-- Hidden File Input (triggered by button) -->
+            <input type="file" class="form-control" id="photo" accept="image/*" style="display:none;">
+            
+            
+        
+            <input type="text" class="form-control mb-3" id="name" placeholder="Full Name">
+            <input type="email" class="form-control mb-3" id="email" placeholder="Email">
+            <input type="tel" class="form-control mb-3" id="phone" placeholder="Phone Number">
+        </div>
+        
+
+        <div id="summary" class="section active">
+            <h2>Summary</h2>
+        
+            <!-- Job Title Dropdown -->
+            <div class="mb-3">
+                <label for="jobTitle" class="form-label">Job Title</label>
+                <select id="jobTitle" class="form-control">
+                    <option value="" disabled selected>Select Job Title</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="UX/UI Designer">UX/UI Designer</option>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Product Manager">Product Manager</option>
+                    <option value="Graphic Designer">Graphic Designer</option>
+                    <option value="Marketing Specialist">Marketing Specialist</option>
+                    <option value="Content Writer">Content Writer</option>
+                    <option value="Business Analyst">Business Analyst</option>
+                </select>
+            </div>
+        
+            <!-- Years of Experience Dropdown -->
+            <div class="mb-3">
+                <label for="yearsExperience" class="form-label">Years of Experience</label>
+                <select id="yearsExperience" class="form-control">
+                    <option value="" disabled selected>Select Experience</option>
+                    <option value="Fresher">Fresher</option>
+                    <option value="1">1 year</option>
+                    <option value="2">2 years</option>
+                    <option value="3">3 years</option>
+                    <option value="4">4 years</option>
+                    <option value="5">5 years</option>
+                    <option value="6">6 years</option>
+                    <option value="7">7 years</option>
+                    <option value="8">8 years</option>
+                    <option value="9">9 years</option>
+                    <option value="10">10+ years</option>
+                </select>
+            </div>
+        
+            <!-- Summary Description Input -->
+            <div class="mb-3">
+                <label for="summaryText" class="form-label">Summary Description</label>
+                <textarea id="summaryText" class="form-control" rows="4" placeholder="Enter a brief summary..."></textarea>
+            </div>
+        </div>
+        
+        
+
+        <div id="education" class="section active">
+            <h2>Education</h2>
+            
+            <!-- Education Fields -->
+            <div id="educationFields">
+                <div class="education-entry form-group">
+                    <label for="collegeName" class="form-label">College Name</label>
+                    <input type="text" class="form-control" id="collegeName" placeholder="Enter College Name">
+                </div>
+                <div class="education-entry form-group">
+                    <label for="yearOfPassing" class="form-label">Year of Passing</label>
+                    <input type="number" class="form-control" id="yearOfPassing" placeholder="Enter Year of Passing">
+                </div>
+                <div class="education-entry form-group">
+                    <label for="percentage" class="form-label">Percentage/CGPA</label>
+                    <input type="number" step="0.1" class="form-control" id="percentage" placeholder="Enter Percentage/CGPA">
+                </div>
+            </div>
+        <div>
+            <!-- Button to add more education entries -->
+            <!-- <button id="addEducationBtn" class="btn btn-primary">Add</button> -->
+        </div>    
+        </div>
+        
+        <!-- Similar Sections for Skills, Experience, Projects, Languages -->
+        <div id="skills" class="section active">
+            <h2>Skills</h2>
+            <div id="skillsFields">
+                <div class="skills-entry form-group">
+                    <label for="skills" class="form-label">Skill</label>
+                    <input type="text" class="form-control" id="skills" placeholder="Enter a skill">
+                </div>
+            </div>
+            <!-- <button id="addSkillsBtn" class="btn btn-primary">Add Another Skill</button> -->
+        </div>
+        
+        <div id="experience" class="section active">
+            <h2>Experience</h2>
+            <div id="experienceFields">
+                <div class="experience-entry form-group">
+                    <label for="companyName" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" placeholder="Enter Company Name">
+                </div>
+                <div class="experience-entry form-group">
+                    <label for="experienceYear" class="form-label">Years of Experience</label>
+                    <input type="number" class="form-control" id="experienceYear" placeholder="Enter Years of Experience">
+                </div>
+            </div>
+            <!-- <button id="addExperienceBtn" class="btn btn-primary">Add Another Experience</button> -->
+        </div>
+        
+        <!-- Similar setup for Projects and Languages -->
+        
+
+        <div id="projects" class="section active">
+            <h2>Projects</h2>
+        
+            <!-- Projects Fields -->
+            <div id="projectsFields">
+                <div class="projects-entry form-group">
+                    <label for="projectName" class="form-label">Project Name</label>
+                    <input type="text" class="form-control" id="projectName" placeholder="Enter Project Name">
+                </div>
+                <div class="projects-entry form-group">
+                    <label for="projectDescription" class="form-label">Project Description</label>
+                    <textarea class="form-control" id="projectDescription" rows="4" placeholder="Describe the project..."></textarea>
+                </div>
+                <div class="projects-entry form-group">
+                    <label for="technologiesUsed" class="form-label">Technologies Used</label>
+                    <input type="text" class="form-control" id="technologiesUsed" placeholder="List technologies used">
+                </div>
+            </div>
+        
+            <!-- Button to add more project entries -->
+            <!-- <button id="addProjectBtn" class="btn btn-primary">Add Another Project</button> -->
+        </div>
+        
+
+        <div id="languages" class="section active">
+            <h2>Languages</h2>
+        
+            <!-- Languages Fields -->
+            <div id="languagesFields">
+                <div class="languages-entry form-group">
+                    <label for="languageName" class="form-label">Language</label>
+                    <input type="text" class="form-control" id="languageName" placeholder="Enter Language Name">
+                </div>
+                <div class="languages-entry form-group">
+                    <label for="proficiencyLevel" class="form-label">Proficiency Level</label>
+                    <select class="form-control" id="proficiencyLevel">
+                        <option value="Basic">Basic</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Fluent">Fluent</option>
+                    </select>
+                </div>
+            </div>
+        
+            <!-- Button to add more language entries -->
+            <!-- <button id="addLanguageBtn" class="btn btn-primary">Add Another Language</button> -->
+        </div>
+        
+
+         <!-- Navigation buttons -->
+         <div id="navigation-buttons" class="mt-3">
+            <button type="button" class="btn btn-secondary" id="back-btn" onclick="moveBack()">Back</button>
+            <button type="button" class="btn btn-primary" id="next-btn" onclick="moveNext()">Next</button>
+            <button type="button" class="btn btn-success" id="finish-btn" onclick="finish()">Finish</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
